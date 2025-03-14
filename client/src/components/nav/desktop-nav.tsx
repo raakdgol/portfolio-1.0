@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "wouter";
+import { useScrollTo } from "@/hooks/useScrollTo";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -11,6 +11,7 @@ const navItems = [
 
 export default function DesktopNav() {
   const [activeSection, setActiveSection] = useState("");
+  const scrollTo = useScrollTo();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,15 +40,18 @@ export default function DesktopNav() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: i * 0.1 }}
         >
-          <Link href={item.href}>
-            <a className={`text-sm font-mono relative py-2 px-4 
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo(item.href.substring(1));
+            }}
+            className={`text-sm font-mono relative py-2 px-4 
               ${activeSection === item.href.substring(1) ? 'text-emerald-400' : 'text-gray-400'}
               hover:text-emerald-400 transition-colors`}
-            >
-              <span className="text-emerald-400 mr-1">0{i + 1}.</span>
-              {item.name}
-            </a>
-          </Link>
+          >
+            <span className="text-emerald-400 mr-1">0{i + 1}.</span>
+            {item.name}
+          </button>
         </motion.div>
       ))}
     </nav>

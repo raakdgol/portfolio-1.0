@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
-import { Link } from "wouter";
+import { useScrollTo } from "@/hooks/useScrollTo";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -12,6 +12,7 @@ const navItems = [
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollTo = useScrollTo();
 
   return (
     <div className="md:hidden">
@@ -43,15 +44,16 @@ export default function MobileNav() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: i * 0.1 }}
                 >
-                  <Link href={item.href}>
-                    <a
-                      onClick={() => setIsOpen(false)}
-                      className="text-lg font-mono text-gray-400 hover:text-emerald-400 transition-colors"
-                    >
-                      <span className="text-emerald-400 mr-2">0{i + 1}.</span>
-                      {item.name}
-                    </a>
-                  </Link>
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      scrollTo(item.href.substring(1));
+                    }}
+                    className="text-lg font-mono text-gray-400 hover:text-emerald-400 transition-colors"
+                  >
+                    <span className="text-emerald-400 mr-2">0{i + 1}.</span>
+                    {item.name}
+                  </button>
                 </motion.div>
               ))}
             </nav>
