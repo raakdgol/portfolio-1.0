@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useScrollTo } from "@/hooks/useScrollTo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -32,7 +33,7 @@ export default function DesktopNav() {
   }, []);
 
   return (
-    <nav className="hidden md:flex fixed top-0 right-0 py-8 px-12 gap-8 z-50">
+    <nav className="hidden md:flex fixed top-0 right-0 py-8 px-12 gap-8 z-50 items-center">
       {navItems.map((item, i) => (
         <motion.div
           key={item.name}
@@ -54,6 +55,7 @@ export default function DesktopNav() {
           </button>
         </motion.div>
       ))}
+      <ThemeToggle />
     </nav>
   );
 }

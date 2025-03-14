@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
 import { useScrollTo } from "@/hooks/useScrollTo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -16,16 +17,19 @@ export default function MobileNav() {
 
   return (
     <div className="md:hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-50 p-2"
-      >
-        {isOpen ? (
-          <X className="h-6 w-6 text-emerald-400" />
-        ) : (
-          <Menu className="h-6 w-6 text-emerald-400" />
-        )}
-      </button>
+      <div className="fixed top-6 right-6 z-50 flex items-center gap-4">
+        <ThemeToggle />
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2"
+        >
+          {isOpen ? (
+            <X className="h-6 w-6 text-emerald-400" />
+          ) : (
+            <Menu className="h-6 w-6 text-emerald-400" />
+          )}
+        </button>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
