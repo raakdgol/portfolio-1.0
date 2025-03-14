@@ -18,11 +18,11 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-gray-200 mb-12 flex items-center"
+          className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
           <span className="text-emerald-400 font-mono mr-2">01.</span>
           About Me
-          <span className="h-px bg-gray-700 flex-grow ml-4"></span>
+          <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -31,7 +31,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400 space-y-4"
+            className="text-foreground/70 space-y-4"
           >
             <p>
               Hello! My name is Brittany and I enjoy creating things that live on the internet.
@@ -45,7 +45,7 @@ export default function About() {
               experiences.
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
-            
+
             <ul className="grid grid-cols-2 gap-2 mt-4">
               {skills.map((skill, i) => (
                 <motion.li
@@ -54,7 +54,7 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.1 }}
-                  className="flex items-center font-mono text-sm"
+                  className="flex items-center font-mono text-sm text-foreground/80"
                 >
                   <span className="text-emerald-400 mr-2">▹</span>
                   {skill}

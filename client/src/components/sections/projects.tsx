@@ -57,7 +57,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-emerald-400 transition-colors"
+                      className="text-foreground/70 hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -69,7 +69,7 @@ export default function Projects() {
                       href={project.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-emerald-400 transition-colors"
+                      className="text-foreground/70 hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -79,7 +79,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-4 group-hover:text-foreground transition-colors">
+              <p className="text-foreground/70 mb-4 group-hover:text-foreground transition-colors">
                 {project.description}
               </p>
 

@@ -20,11 +20,11 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl font-bold text-gray-200 mb-12 flex items-center"
+          className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
           <span className="text-emerald-400 font-mono mr-2">02.</span>
           Where I've Worked
-          <span className="h-px bg-gray-700 flex-grow ml-4"></span>
+          <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
 
         <div className="max-w-2xl mx-auto">
@@ -37,13 +37,13 @@ export default function Experience() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="mb-12"
             >
-              <h3 className="text-xl text-gray-200 mb-1">
+              <h3 className="text-xl text-foreground mb-1">
                 <span className="text-emerald-400">{experience.title}</span> @ {experience.company}
               </h3>
-              <p className="font-mono text-sm text-gray-400 mb-4">{experience.range}</p>
+              <p className="font-mono text-sm text-foreground/70 mb-4">{experience.range}</p>
               <ul className="space-y-4">
                 {experience.duties.map((duty, i) => (
-                  <li key={i} className="flex text-gray-400">
+                  <li key={i} className="flex text-foreground/70">
                     <span className="text-emerald-400 mr-2">▹</span>
                     {duty}
                   </li>
