@@ -36,46 +36,63 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 transition-colors"
+              whileHover={{ 
+                scale: 1.03,
+                transition: { duration: 0.2 }
+              }}
+              className="group relative bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 
+                         transition-all duration-300 shadow-lg hover:shadow-emerald-500/10"
             >
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-semibold text-gray-200">
+                <motion.h3 
+                  className="text-xl font-semibold text-gray-200"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
                   {project.title}
-                </h3>
+                </motion.h3>
                 <div className="flex gap-4">
                   {project.githubUrl && (
-                    <a
+                    <motion.a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-emerald-400 transition-colors"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <Github className="h-5 w-5" />
-                    </a>
+                    </motion.a>
                   )}
                   {project.externalUrl && (
-                    <a
+                    <motion.a
                       href={project.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-emerald-400 transition-colors"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <ExternalLink className="h-5 w-5" />
-                    </a>
+                    </motion.a>
                   )}
                 </div>
               </div>
 
-              <p className="text-gray-400 mb-4">{project.description}</p>
+              <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+                {project.description}
+              </p>
 
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
-                  <span
+                  <motion.span
                     key={tech}
                     className="text-emerald-400 font-mono text-sm"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
