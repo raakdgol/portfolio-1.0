@@ -1,14 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground transition-colors duration-300;
   }
 
   /* Custom Scrollbar */
@@ -17,17 +17,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: theme('colors.slate.900');
+    @apply bg-slate-200 dark:bg-slate-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: theme('colors.slate.700');
-    border: 3px solid theme('colors.slate.900');
-    border-radius: 10px;
+    @apply bg-slate-400 dark:bg-slate-700 border-[3px] border-slate-200 dark:border-slate-900 rounded-[10px];
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.slate.600');
+    @apply bg-slate-500 dark:bg-slate-600;
   }
 
   /* Smooth Scrolling */
@@ -37,7 +35,11 @@
 
   /* Selection Color */
   ::selection {
-    background: theme('colors.emerald.400/30');
-    color: theme('colors.emerald.400');
+    @apply bg-emerald-400/30 text-emerald-400;
+  }
+
+  /* Theme Transition */
+  :root {
+    @apply transition-colors duration-300;
   }
 }
