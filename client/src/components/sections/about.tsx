@@ -20,7 +20,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
-          <span className="text-emerald-400 font-mono mr-2">01.</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-mono mr-2">01.</span>
           About Me
           <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
@@ -31,7 +31,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-foreground/70 space-y-4"
+            className="text-foreground/90 dark:text-foreground/70 space-y-4"
           >
             <p>
               Hello! My name is Brittany and I enjoy creating things that live on the internet.
@@ -54,9 +54,9 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.1 }}
-                  className="flex items-center font-mono text-sm text-foreground/80"
+                  className="flex items-center font-mono text-sm text-emerald-700 dark:text-emerald-400/90"
                 >
-                  <span className="text-emerald-400 mr-2">▹</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 mr-2">▹</span>
                   {skill}
                 </motion.li>
               ))}

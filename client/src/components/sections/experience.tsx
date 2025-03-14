@@ -38,13 +38,13 @@ export default function Experience() {
               className="mb-12"
             >
               <h3 className="text-xl text-foreground mb-1">
-                <span className="text-emerald-400">{experience.title}</span> @ {experience.company}
+                <span className="text-emerald-600 dark:text-emerald-400">{experience.title}</span> @ {experience.company}
               </h3>
-              <p className="font-mono text-sm text-foreground/70 mb-4">{experience.range}</p>
+              <p className="font-mono text-sm text-emerald-700/80 dark:text-foreground/70 mb-4">{experience.range}</p>
               <ul className="space-y-4">
                 {experience.duties.map((duty, i) => (
-                  <li key={i} className="flex text-foreground/70">
-                    <span className="text-emerald-400 mr-2">▹</span>
+                  <li key={i} className="flex text-foreground/80 dark:text-foreground/70">
+                    <span className="text-emerald-600 dark:text-emerald-400 mr-2">▹</span>
                     {duty}
                   </li>
                 ))}

@@ -45,7 +45,7 @@ export default function Projects() {
             >
               <div className="flex justify-between items-start mb-4">
                 <motion.h3 
-                  className="text-xl font-semibold text-foreground"
+                  className="text-xl font-semibold text-foreground hover:text-emerald-600 dark:hover:text-emerald-400"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -57,7 +57,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-emerald-400 transition-colors"
+                      className="text-foreground/80 dark:text-foreground/60 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -69,7 +69,7 @@ export default function Projects() {
                       href={project.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-emerald-400 transition-colors"
+                      className="text-foreground/80 dark:text-foreground/60 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -79,7 +79,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-foreground/70 mb-4 group-hover:text-foreground transition-colors">
+              <p className="text-foreground/80 dark:text-foreground/60 mb-4 group-hover:text-emerald-700 dark:group-hover:text-foreground transition-colors">
                 {project.description}
               </p>
 
@@ -87,7 +87,7 @@ export default function Projects() {
                 {project.tech.map((tech) => (
                   <motion.span
                     key={tech}
-                    className="text-emerald-400 font-mono text-sm"
+                    className="text-emerald-600 dark:text-emerald-400 font-mono text-sm"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
