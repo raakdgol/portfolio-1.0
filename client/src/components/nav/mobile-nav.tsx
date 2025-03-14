@@ -1,0 +1,63 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Menu } from "lucide-react";
+import { Link } from "wouter";
+
+const navItems = [
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Work", href: "#work" },
+  { name: "Contact", href: "#contact" }
+];
+
+export default function MobileNav() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="md:hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-6 right-6 z-50 p-2"
+      >
+        {isOpen ? (
+          <X className="h-6 w-6 text-emerald-400" />
+        ) : (
+          <Menu className="h-6 w-6 text-emerald-400" />
+        )}
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+            className="fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-40"
+          >
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                >
+                  <Link href={item.href}>
+                    <a
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg font-mono text-gray-400 hover:text-emerald-400 transition-colors"
+                    >
+                      <span className="text-emerald-400 mr-2">0{i + 1}.</span>
+                      {item.name}
+                    </a>
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
