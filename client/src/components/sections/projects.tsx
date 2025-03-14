@@ -21,11 +21,11 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl font-bold text-gray-200 mb-12 flex items-center"
+          className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
           <span className="text-emerald-400 font-mono mr-2">03.</span>
           Some Things I've Built
-          <span className="h-px bg-gray-700 flex-grow ml-4"></span>
+          <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -40,12 +40,12 @@ export default function Projects() {
                 scale: 1.03,
                 transition: { duration: 0.2 }
               }}
-              className="group relative bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 
+              className="group relative bg-card rounded-lg p-6 hover:bg-accent 
                          transition-all duration-300 shadow-lg hover:shadow-emerald-500/10"
             >
               <div className="flex justify-between items-start mb-4">
                 <motion.h3 
-                  className="text-xl font-semibold text-gray-200"
+                  className="text-xl font-semibold text-foreground"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -57,7 +57,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-emerald-400 transition-colors"
+                      className="text-muted-foreground hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -69,7 +69,7 @@ export default function Projects() {
                       href={project.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-emerald-400 transition-colors"
+                      className="text-muted-foreground hover:text-emerald-400 transition-colors"
                       whileHover={{ scale: 1.1, y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -79,7 +79,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+              <p className="text-muted-foreground mb-4 group-hover:text-foreground transition-colors">
                 {project.description}
               </p>
 

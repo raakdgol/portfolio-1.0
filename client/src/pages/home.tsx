@@ -8,7 +8,7 @@ import MobileNav from "@/components/nav/mobile-nav";
 
 export default function Home() {
   return (
-    <div className="bg-slate-900 min-h-screen">
+    <div className="bg-background min-h-screen text-foreground">
       <DesktopNav />
       <MobileNav />
       <main>
