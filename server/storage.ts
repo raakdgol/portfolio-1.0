@@ -1,13 +1,6 @@
-import { users, type User, type InsertUser } from "@shared/schema";
 import { type Project, type Experience, type InsertProject, type InsertExperience } from "@shared/schema";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
   getProjects(): Promise<Project[]>;
   getExperiences(): Promise<Experience[]>;
   createProject(project: InsertProject): Promise<Project>;
@@ -15,40 +8,19 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
   private projects: Map<number, Project>;
   private experiences: Map<number, Experience>;
-  currentId: number;
   private projectId: number;
   private experienceId: number;
 
   constructor() {
-    this.users = new Map();
     this.projects = new Map();
     this.experiences = new Map();
-    this.currentId = 1;
     this.projectId = 1;
     this.experienceId = 1;
 
     // Add some sample data
     this.initializeSampleData();
-  }
-
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
   }
 
   async getProjects(): Promise<Project[]> {
@@ -61,7 +33,14 @@ export class MemStorage implements IStorage {
 
   async createProject(project: InsertProject): Promise<Project> {
     const id = this.projectId++;
-    const newProject = { ...project, id };
+    const newProject = { 
+      ...project, 
+      id,
+      githubUrl: project.githubUrl ?? null,
+      externalUrl: project.externalUrl ?? null,
+      featured: project.featured ?? null,
+      imageUrl: project.imageUrl ?? null
+    };
     this.projects.set(id, newProject);
     return newProject;
   }
