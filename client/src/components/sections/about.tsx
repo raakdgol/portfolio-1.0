@@ -1,5 +1,37 @@
 import { motion } from "framer-motion";
 
+const fadeInScale = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
+
+const staggerList = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const listItem = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3
+    }
+  }
+};
+
 export default function About() {
   const skills = [
     "JavaScript (ES6+)", 
@@ -14,10 +46,10 @@ export default function About() {
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInScale}
           className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
           <span className="text-emerald-600 dark:text-emerald-400 font-mono mr-2">01.</span>
@@ -27,10 +59,10 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInScale}
             className="text-foreground/90 dark:text-foreground/70 space-y-4"
           >
             <p>
@@ -46,28 +78,31 @@ export default function About() {
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
 
-            <ul className="grid grid-cols-2 gap-2 mt-4">
-              {skills.map((skill, i) => (
+            <motion.ul 
+              className="grid grid-cols-2 gap-2 mt-4"
+              variants={staggerList}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {skills.map((skill) => (
                 <motion.li
                   key={skill}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                  variants={listItem}
                   className="flex items-center font-mono text-sm text-emerald-700 dark:text-emerald-400/90"
                 >
                   <span className="text-emerald-600 dark:text-emerald-400 mr-2">▹</span>
                   {skill}
                 </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInScale}
             className="relative"
           >
             <div className="relative aspect-square">

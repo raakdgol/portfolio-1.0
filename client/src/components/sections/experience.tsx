@@ -2,6 +2,27 @@ import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import type { Experience } from "@shared/schema";
 
+const fadeInRight = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 export default function Experience() {
   const { data: experiences, isLoading } = useQuery<Experience[]>({
     queryKey: ["/api/experiences"]
@@ -17,41 +38,54 @@ export default function Experience() {
     <section id="experience" className="py-20">
       <div className="container mx-auto px-4">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInRight}
           className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
-          <span className="text-emerald-400 font-mono mr-2">02.</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-mono mr-2">02.</span>
           Where I've Worked
           <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
 
-        <div className="max-w-2xl mx-auto">
-          {experiences?.map((experience, index) => (
+        <motion.div 
+          className="max-w-2xl mx-auto"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {experiences?.map((experience) => (
             <motion.div
               key={experience.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeInRight}
               className="mb-12"
             >
               <h3 className="text-xl text-foreground mb-1">
                 <span className="text-emerald-600 dark:text-emerald-400">{experience.title}</span> @ {experience.company}
               </h3>
               <p className="font-mono text-sm text-emerald-700/80 dark:text-foreground/70 mb-4">{experience.range}</p>
-              <ul className="space-y-4">
+              <motion.ul 
+                className="space-y-4"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+              >
                 {experience.duties.map((duty, i) => (
-                  <li key={i} className="flex text-foreground/80 dark:text-foreground/70">
+                  <motion.li 
+                    key={i} 
+                    variants={fadeInRight}
+                    className="flex text-foreground/80 dark:text-foreground/70"
+                  >
                     <span className="text-emerald-600 dark:text-emerald-400 mr-2">▹</span>
                     {duty}
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

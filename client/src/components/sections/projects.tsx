@@ -3,6 +3,27 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import type { Project } from "@shared/schema";
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
 export default function Projects() {
   const { data: projects, isLoading } = useQuery<Project[]>({
     queryKey: ["/api/projects"]
@@ -18,24 +39,28 @@ export default function Projects() {
     <section id="work" className="py-20">
       <div className="container mx-auto px-4">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
           className="text-2xl font-bold text-foreground mb-12 flex items-center"
         >
-          <span className="text-emerald-400 font-mono mr-2">03.</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-mono mr-2">03.</span>
           Some Things I've Built
           <span className="h-px bg-border flex-grow ml-4"></span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {projects?.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeInUp}
               whileHover={{ 
                 scale: 1.03,
                 transition: { duration: 0.2 }
@@ -97,7 +122,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
