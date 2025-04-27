@@ -1,3 +1,4 @@
+
 class MemStorage {
   constructor() {
     this.projects = new Map();
@@ -41,7 +42,7 @@ class MemStorage {
       title: "Halcyon Theme",
       description: "A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more.",
       tech: ["VS Code", "Sublime Text", "Atom", "iTerm2", "Hyper"],
-      githubUrl: "https://github.com/bchiang7/halcyon-site",
+      githubUrl: "https://github.com/bchiang7/halcyon-site", 
       externalUrl: "https://halcyon-theme.netlify.app/",
       featured: 1,
       imageUrl: "/halcyon.png"
