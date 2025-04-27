@@ -1,8 +1,8 @@
-import type { Express } from "express";
-import { createServer, type Server } from "http";
-import { storage } from "./storage";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+import { createServer } from "http";
+import { storage } from "./storage.js";
+
+export async function registerRoutes(app) {
   const httpServer = createServer(app);
 
   app.get("/api/projects", async (_req, res) => {
