@@ -5,7 +5,10 @@ import { useScrollTo } from "@/hooks/useScrollTo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
-  { name: "Home", href: "#hero" }
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Work", href: "#work" },
+  { name: "Contact", href: "#contact" }
 ];
 
 export default function DesktopNav() {
