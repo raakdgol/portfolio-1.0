@@ -53,7 +53,6 @@ export default function MobileNav() {
                     }}
                     className="text-lg font-mono text-gray-400 hover:text-emerald-400 transition-colors"
                   >
-                    <span className="text-emerald-400 mr-2">01.</span>
                     {item.name}
                   </button>
                 </motion.div>

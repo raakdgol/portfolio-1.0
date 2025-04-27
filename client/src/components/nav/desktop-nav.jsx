@@ -49,7 +49,6 @@ export default function DesktopNav() {
             }}
             className={activeSection === item.href.substring(1) ? 'text-emerald-400' : 'text-gray-400'}
           >
-            <span className="text-emerald-400 mr-1">01.</span>
             {item.name}
           </button>
         </motion.div>
