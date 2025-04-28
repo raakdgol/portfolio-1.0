@@ -1,7 +1,7 @@
 
 class MemStorage {
   constructor() {
-    // Empty constructor since storage not needed
+    // Empty constructor
   }
 }
 

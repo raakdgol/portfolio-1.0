@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
-import { useScrollTo } from "@/hooks/useScrollTo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
@@ -14,7 +13,7 @@ const navItems = [
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const scrollTo = useScrollTo();
+  
 
   return (
     <div className="md:hidden">

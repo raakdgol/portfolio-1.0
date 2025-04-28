@@ -1,4 +1,3 @@
-
 import express from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite.js";
@@ -14,12 +13,19 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  app.use((err, _req, res, _next) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    res.status(status).json({ message });
-    throw err;
-  });
+  app.use(
+    (
+      err: Error & { status?: number; statusCode?: number },
+      _req: express.Request,
+      res: express.Response,
+      _next: express.NextFunction,
+    ) => {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
+      res.status(status).json({ message });
+      throw err;
+    },
+  );
 
   if (app.get("env") === "development") {
     await setupVite(app, server);
@@ -27,12 +33,8 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  const port = 3000;
+  server.listen(port, () => {
     log(`serving on port ${port}`);
   });
 })();

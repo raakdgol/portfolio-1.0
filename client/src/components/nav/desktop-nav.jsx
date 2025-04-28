@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useScrollTo } from "@/hooks/useScrollTo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
@@ -13,7 +12,7 @@ const navItems = [
 
 export default function DesktopNav() {
   const [activeSection, setActiveSection] = useState("");
-  const scrollTo = useScrollTo();
+  
 
   useEffect(() => {
     const handleScroll = () => {
