@@ -1,4 +1,4 @@
-# Portfolio 2.5
+# Portfolio
 
 A modern portfolio web application built with React, TypeScript, and TailwindCSS.
 
